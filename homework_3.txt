@@ -1,0 +1,150 @@
+#1
+
+def my_func(a,b):
+    if b==0:
+        return print('нельзя делить на 0!')
+    else:
+        return a/b #почему если я вторым числом вывожу 0,то в результате возвращается 'нельзя делить на 0!' и None?
+
+a=int(input('введите первое число: '))
+b=int(input('введите второе число: '))
+print(my_func(a,b))
+
+********************************************************
+#2
+
+def my_func(first_name, last_name, birth_year, city, email, phone):
+    return list[first_name, last_name, birth_year, city, email, phone]
+
+print(my_func('Boris','Ivanov', email='bi@ya.ru', phone='812312323232', city='Moscow', birth_year=1990))
+
+********************************************************
+#3
+
+def my_func(a,b,c):
+    tech_list=[a,b,c]
+    tech_list.remove(min(a,b,c))
+    return sum(tech_list)
+
+x=int(input('Введите число: '))
+y=int(input('Введите число: '))
+z=int(input('Введите число: '))
+print(my_func(z,y,x))
+
+********************************************************
+#4
+
+def my_func(a,b):
+    power=a
+    for i in range(b-1):
+        a=a*power
+    return 1/a
+
+x=int(input('Введите число: '))
+y=int(input('Введите число: '))
+
+print(my_func(x, y))
+
+********************************************************
+
+#5
+
+def my_func():
+    a=input('Введите строку чисел, разделенных пробелом: ')
+    tech_list=a.split()
+    b_iterator=0
+    c_sum=0
+    while b_iterator in range(len(tech_list)):
+        while b_iterator in range(len(tech_list)) and tech_list[b_iterator] != '*': #не смогла без повторения условия сделать, как можно переделать условие?
+            c_sum=c_sum+int(tech_list[b_iterator])
+            b_iterator+=1
+        print(c_sum)
+        if b_iterator in range(len(tech_list)) and tech_list[b_iterator] == '*':
+            print('Вы нажали "*" - это означает завершение программы')
+            break
+        a2=input('Введите строку чисел, разделенных пробелом: ')
+        tech_list2=a2.split()
+        tech_list3=tech_list.extend(tech_list2)
+        continue #Вообще, первый while тут только для того, чтобы continue добавить, как можно без двух while его исопльзовать было?
+    return c_sum
+
+my_func()
+
+********************************************************
+
+#6
+
+def int_func(a):
+#    a=input('Введите что-нибудь: ')
+    new_line=''
+ #   return a.title()
+    for i in range(len(a)):
+        if i==0:
+            if a[0]=='a':
+                new_line ='A'
+            elif a[0]=='b':
+                new_line ='B'
+            elif a[0] == 'c':
+                new_line = 'C'
+            elif a[0]=='d':
+                new_line ='D'
+            elif a[0]=='e':
+                new_line ='E'
+            elif a[0]=='f':
+                new_line ='F'
+            elif a[0]=='g':
+                new_line ='G'
+            elif a[0]=='h':
+                new_line ='H'
+            elif a[0]=='i':
+                new_line ='I'
+            elif a[0]=='j':
+                new_line ='J'
+            elif a[0]=='k':
+                new_line ='K'
+            elif a[0]=='l':
+                new_line ='L'
+            elif a[0]=='m':
+                new_line ='M'
+            elif a[0]=='n':
+                new_line ='N'
+            elif a[0]=='o':
+                new_line ='O'
+            elif a[0]=='p':
+                new_line ='P'
+            elif a[0]=='q':
+                new_line ='Q'
+            elif a[0]=='r':
+                new_line ='R'
+            elif a[0]=='s':
+                new_line ='S'
+            elif a[0]=='t':
+                new_line ='T'
+            elif a[0]=='u':
+                new_line ='U'
+            elif a[0]=='v':
+                new_line ='V'
+            elif a[0]=='w':
+                new_line ='W'
+            elif a[0]=='x':
+                new_line ='X'
+            elif a[0]=='y':
+                new_line ='Y'
+            elif a[0]=='z':
+                new_line ='Z'
+        elif i!=0:
+            new_line=new_line+a[i]
+    return new_line
+
+def big_int_func():
+    a=input('Введите что-нибудь: ')
+    tech_list=a.split()
+    upd_list=[]
+    upd_str=''
+    for i in tech_list:
+        upd_list.append(int_func(i))
+    upd_str = ' '.join(upd_list)
+    return upd_str
+
+print(big_int_func())
+
