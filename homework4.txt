@@ -1,0 +1,81 @@
+#1
+
+def income_func(hours_worked, rate, premium=0.2):
+    return hours_worked*rate*(1+premium)
+
+print(income_func(8, 1000, 0.1))
+
+******************************************************************************
+
+#2
+
+initial_list=[300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
+generator_list = [initial_list[i] for i in range(1,len(initial_list)) if initial_list[i] >initial_list[i-1] ]
+print(generator_list)
+
+******************************************************************************
+
+#3
+
+generator_list = [i for i in range(20, 241) if i%20==0 or i%21==0 ]
+print(generator_list)
+
+******************************************************************************
+
+#4
+
+initial_list=[2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+generator_list = [i for i in initial_list if initial_list.count(i)==1 ]
+print(generator_list)
+
+******************************************************************************
+
+#5
+
+def mult_func(a, b):
+    c=b*a
+    return c
+
+my_list = [i for i in range(2, 7) if i%2==0]
+print(reduce(mult_func, my_list))
+
+******************************************************************************
+
+#6
+
+6a)
+
+from itertools import count, cycle
+
+#def count_f(a, b):
+for i in count(10, 1):
+    if i > 20:
+        break
+    else:
+        print(i)
+
+#print(count_f(10,20))
+
+***************************
+6b)
+
+
+b=['a', 123, ('sdf', 'sdf')]
+a = 0
+for item in cycle(b):
+    if a > 10:
+        break
+    print(item)
+    a += 1
+******************************************************************************
+
+#7
+
+def func_generator():
+    fact=1
+    for i in range(1, 5):
+        fact=fact*i
+        yield fact
+
+for el in func_generator():
+    print(el)
