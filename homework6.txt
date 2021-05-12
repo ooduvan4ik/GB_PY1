@@ -1,0 +1,190 @@
+№1
+
+import time
+class TrafficLight():
+    def running(self):
+        self.__color = input('Введите цвет светофора: ')
+        if self.__color not in ('red', 'green','yellow'):
+            print('No such color for traffic light!')
+        while self.__color in ('red', 'green','yellow'):
+            if self.__color =='red':
+                print(self.__color)
+                time.sleep(7)
+                print('yellow')
+                time.sleep(2)
+                print('green')
+                time.sleep(4)
+                print('yellow')
+                time.sleep(2)
+            elif self.__color == 'yellow':
+                print(self.__color)
+                time.sleep(2)
+                print('green')
+                time.sleep(4)
+                print('yellow')
+                time.sleep(2)
+                print('red')
+                time.sleep(7)
+            elif self.__color == 'green':
+                print(self.__color)
+                time.sleep(4)
+                print('yellow')
+                time.sleep(2)
+                print('red')
+                time.sleep(7)
+                print('yellow')
+                time.sleep(2)
+
+
+traf=   TrafficLight() #не совсем поняла постановку задачи, сделала просто бесконечный светофор.
+
+print(traf.running())
+
+**************************************************************************************
+
+№2
+
+class Road():
+    def __init__(self, length, width, weight, thickness):
+        self.__l=length
+        self.__w=width
+        self.wei=weight
+        self.t=thickness
+
+    def asphalt_calc(self):
+        a_calc=self.__l*self.__w*self.wei*self.t/1000
+        print(f'Требуется {a_calc} тонн дорожного покрытия')
+
+new_road = Road(20,5000, 25,5)
+new_road.asphalt_calc()
+
+**************************************************************************************
+
+№3
+
+salary_dict = {'manager': 100000, 'cleaner': 10000, 'accountant': 30000, 'developer': 80000}
+bonus_dict = {'manager': 0.3, 'cleaner': 0, 'accountant': 0.1, 'developer': 0.2}
+
+class Worker():
+    def __init__(self, name, surname, position):
+        self.n=name
+        self.s=surname
+        self.p=position
+        self.i=salary_dict[position]*(1+bonus_dict[position])
+
+#ab=Worker('John', 'Ivnov', 'manager')
+
+class Position(Worker):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def get_full_name(self):
+        print(self.n+' '+self.s)
+
+    def get_total_income(self):
+        print(self.i) #я не поняла, каким образом обратиться к защищенному атрибуту, поэтому сделала обычным. Как указано в методичке вариант Worker.__i не работает.
+
+new_empl=Position('John', 'Ivnov', 'manager')
+new_empl.get_full_name()
+new_empl.get_total_income()
+
+**************************************************************************************
+
+№4
+
+class Car():
+    def __init__(self,speed, color, name, is_police):
+        self.s=speed
+        self.c=color
+        self.n=name
+        self.p=is_police
+
+    def go(self):
+        print('go!')
+
+    def stop(self):
+        print('stop!')
+
+    def turn(self):
+        print('turn')
+
+    def show_speed(self):
+        print(self.s)
+
+class TownCar(Car):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def show_speed(self):
+        if self.s>60:
+            print('Speed limit is exceeded!')
+        else:
+            print(self.s)
+
+class SportCar(Car):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+class WorkCar(Car):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def show_speed(self):
+        if self.s>40:
+            print('Speed limit is exceeded!')
+        else:
+            print(self.s)
+
+class PoliceCar(Car):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.p=1
+
+my_new_car1=WorkCar(40, 'red', 'mazda', 0)
+my_new_car1.show_speed()
+print(my_new_car1.p)
+
+my_new_car2=PoliceCar(40, 'red', 'mazda', 0)
+print(my_new_car2.p)
+
+**************************************************************************************
+
+№5
+
+class Stationery():
+    def __init__(self, title1):
+        self.title=title1
+
+    def draw(self):
+        print('Запуск отрисовки.')
+
+class Pen(Stationery):  
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def draw(self):
+        print('Запуск отрисовки для ручки.')
+
+class Pencil(Stationery):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def draw(self):
+        print('Запуск отрисовки для карандаша.')
+
+class Handle(Stationery):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def draw(self):
+        print('Запуск отрисовки для маркера.')
+
+newa1=Pen('паркер')
+print(newa1.title)
+
+newa2=Pen('Супер-карандаш')
+print(newa2.title)
+
+newa3=Pen('Черный маркер')
+print(newa3.title)
