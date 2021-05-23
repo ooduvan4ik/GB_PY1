@@ -1,0 +1,105 @@
+№1.
+
+l=[]
+l.append(12)
+l.append([1,2,3])
+l.append({1:2, 't':3})
+l.append('sdfsf')
+print(l)
+for i in l:
+    print(type(i))
+
+...
+№2.
+
+l2=[]
+rand_no=int(input('Введите число элементов для списка: '))
+for i in range(rand_no):
+    l2.append(str(input('Введите что-нибудь: ')))
+for i in range(int(rand_no/2)):
+    a=l2[i*2+1]
+    l2[i*2+1]=l2[i*2]
+    l2[i*2]=a
+print(l2)
+
+...
+№3(1).
+
+a=int(input('Введите номер месяца: '))
+b={1:'january',2:'february',3:'march',4:'april',5:'may',6:'june',7:'july',8:'august',9:'september',10:'october',11:'november',12:'december'}
+print(b[a])
+
+...
+№3(2).
+
+a=int(input('Введите номер месяца: '))
+b=('january','february','march','april','may','june','july','august','september','october','november','december')
+print(b[a-1])
+
+...
+№4.
+
+a=input('введите что-то: ')
+b=a.split()
+for i in range(len(b)):
+    if len(b[i])>10:
+        print(i, b[i][:10])
+    elif len(b[i])<=10:
+        print(i, b[i])
+		
+...
+№5.
+
+l=[200,133,104,101,70,56,45]
+b_index=l.index(45)
+print(b_index)
+a_user_input=int(input('Введите число: '))
+for i in l:
+    if a_user_input<l[len(l)-1]:
+        l.append(a_user_input)
+        break #хотела сделать, чтобы скрипт снова предлагал ввести число,но не поняла, как это сделать,если убираю break,получается бесконечный цикл
+    if a_user_input>i:
+        b_index=(l.index(i))
+        l.insert(b_index,a_user_input)
+        break
+    elif a_user_input<i:
+        continue
+print(l)
+
+...
+№6(1).
+
+goods = []
+for i in range(3): 
+    adict = {}
+    adict['title']= input('Print title: ')
+    adict['price'] =  input('Print price: ')
+    adict['item'] =  input('Print default item: ')
+    goods.append(adict)
+
+rating=[]
+for j in enumerate(goods): #не поняла как сделать, чтобы нумерация начиналась с 1.
+    rating.append(j)
+print(rating)
+
+...
+№6(2).
+
+dic_title=[]
+dic_price=[]
+dic_items=[]
+
+a=int(input('Введите планируемое число товаров для заведения: '))
+print(a)
+
+for i in range(a):
+    dic_title.append(input('Введите название товара: '))
+    dic_price.append(input('Введите цену товара: '))
+    dic_items.append(input('Введите единицу измерения товара: '))
+
+dict_analytics = {}
+dict_analytics['Название товара']=dic_title
+dict_analytics['Цена товара']=dic_price
+dict_analytics['Единица измерения товара']=dic_items
+print(dict_analytics)
+		

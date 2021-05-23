@@ -1,0 +1,141 @@
+№1
+
+str_l = [] /*не совсем поняла, сколько должен пользователь вводить данных и как это должно быть определено?
+quanitiy_u = int(input('Введите количество строк, которые вы хотите видеть в файле: '))
+for i in range(quanitiy_u):
+    str_l.append(input('Введите строку: ') + '\n')
+print(str_l)
+
+with open('my_file', 'w') as f:
+    f.writelines(str_l)
+
+f.close()
+
+***************************************************************
+
+№2
+
+f2=open('test.txt','r', encoding='utf-8')
+i_lines=0
+i_words=0
+for i in f2:
+    i_lines=i_lines+1
+    i_list=i.split()
+    for j in i_list:
+        i_words=i_words+1
+    i_words_str=str(i_words)
+    print((f"В строке {str(i_lines)} - {i_words_str} слов"))
+lines_no=str(i_lines)
+print(f"В файле test.txt {lines_no} строк")
+
+f2.close()
+
+***************************************************************
+
+№3
+
+file1=open(r'test2.txt','r', encoding='utf-8')
+iter_count=0
+iter_sum=0
+salary = {}
+low_salaty_list=[]
+for i in file1:
+    i_list=i.split()
+    salary[i_list[0]] = i_list[1]
+for j in salary.items():
+    iter_sum=iter_sum+int(j[1])
+    iter_count = iter_count+1
+    if int(j[1])<20000:
+        low_salaty_list.append(j[0])
+print(f"Следующие сотрудники имеют зарплату менее 20000 рублей: {low_salaty_list}")
+average_salary = iter_sum/iter_count
+	#можно ли как-то иначе найти среднюю зп? вроде метод и sum нельзя применить..?
+	#хотела через конструкцию, подразумевающую sum()/count() - но там ругается на тип, count нельзя к dict.items применять...
+print(f"Средняя зарплата в файле составляет {average_salary} рублей")
+file1.close()
+
+***************************************************************
+
+#4
+
+file1=open('test3.txt','r', encoding='utf-8')
+out_f = open('test3_upd.txt', 'w', encoding='utf-8')
+content=file1.readlines()
+translate_dict = {'One':'Один','Two':'Два','Three':'Три','Four':'Четыре'}
+for i in content:
+    new_list=i.split(' ')
+ #   print(new_list)
+    if new_list[0] in translate_dict.keys():
+        new_list[0] = translate_dict[new_list[0]]
+
+    #print(new_list)
+    a=" ".join(new_list)
+    out_f.write(a)
+out_f.close()
+file1.close()
+
+
+***************************************************************
+
+#5
+
+with open('test5.txt','w', encoding='utf-8') as f:
+    f.write('12 3 2 34 3 4 5')
+f.close()
+f=open('test5.txt','r', encoding='utf-8')
+lines=f.read()
+new_str=lines.split()
+a=0
+for i in new_str:
+    a=a+int(i)
+print(a)
+
+***************************************************************
+
+#6
+
+f=open('test6.txt','r', encoding='utf-8')
+line=f.read()
+upd_line=line.split()
+new_l=[]
+for i in upd_line:
+    upd_item0 = i.replace(':', '') #почему двоеточие не удалилось?? С остальными символами сработало
+    upd_item1 = i.replace('(л)', '')
+    upd_item2 = upd_item1.replace('(пр)', '')
+    upd_item3 = upd_item2.replace('(лаб)', '')
+    upd_item4 = upd_item3.replace('—', '0')
+    new_l.append(upd_item4)
+new_dict={}
+for x in range(len(new_l)):
+    if new_l[x] in new_l[::4]:
+        new_dict[new_l[x]]=int(new_l[int(x)+1]) +int(new_l[int(x)+2])+int(new_l[int(x)+3])
+print(new_dict)
+
+***************************************************************
+
+#7
+
+import json
+f=open('test7.txt', 'r', encoding='utf-8')
+lines=f.readlines()
+profit_dict={}
+profit_dict_avg={}
+final_list=[]
+for i in lines:
+    i_list=i.split()
+    profit_dict[i_list[0]]=int(i_list[3])-int(i_list[2])
+avg_list_amount=0
+count_avg_compaies=0
+for profit in profit_dict:
+    if profit_dict[profit]>0:
+        avg_list_amount=avg_list_amount+profit_dict[profit]
+        count_avg_compaies=count_avg_compaies+1
+profit_dict_avg['average_profit']=avg_list_amount/count_avg_compaies
+final_list.append(profit_dict)
+final_list.append(profit_dict_avg)
+print(final_list)
+
+with open('final_list_json.json', 'w', encoding='utf-8') as json_list:
+    json.dump(final_list,json_list #а как сделать, чтобы русский нормально отображался в PYCharm?
+
+

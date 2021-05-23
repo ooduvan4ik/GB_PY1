@@ -1,0 +1,57 @@
+a=input('введите имя: ')
+print('привет,', a)
+
+---------------------------------------------------------------------------------
+b=input('Введите число: ')
+c=input('введите еще число: ')
+print('сумма чисел: ',b+c)
+
+---------------------------------------------------------------------------------
+seconds_time=int(input('Введите время в секундах: '))
+hours=seconds_time//3600 #hours=seconds%3600
+minutes=(seconds_time%3600)//60
+seconds=(seconds_time%3600)%60
+print(hours)
+print(minutes)
+print(seconds)
+print('{}:{}:{}'.format(hours, minutes, seconds))
+
+---------------------------------------------------------------------------------
+n=input('Введите число: ')
+p=int(n)
+a=int(n+n)
+b=int(n+n+n)
+print(p+a+b)
+---------------------------------------------------------------------------------
+
+n=input('Введите число: ')
+a=0
+for i in n:
+    if int(i) > a:
+        a=int(i)
+    if int(i)<=a:
+        continue
+print(a)
+---------------------------------------------------------------------------------
+income=int(input('Введите размер выручки: '))
+expenses=int(input('Введите размер издержек: '))
+finres = income-expenses
+if finres>0:
+    print('У вас прибыль')
+elif finres<0:
+    print('У вас убыток')
+else:
+    print('Вы работаете безрезультатно!')
+
+profitability=finres / income
+print(profitability)
+headcount =int(input('Введите количество сотрудников: '))
+profit_to_empl=finres/headcount
+print(profit_to_empl)
+
+---------------------------------------------------------------------------------
+import math
+a=int(input('Введите a: '))
+b=int(input('Введите b: '))
+n= math.ceil(math.log(b/a , 1.1))+1
+print(n)

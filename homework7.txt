@@ -1,0 +1,133 @@
+**************************************************************************************
+
+№1
+
+class Matrix():
+    def __init__(self, matrix_x):
+        [self.list1, self.list2, self.list3]=matrix_x #я только для квадратной матрицы 3*3 сделала, как сделать универсально, не знаю.
+
+    def __str__(self):
+        for i in self.list1:
+            print(i, end=' ')
+        print('')
+        for j in self.list2:
+            print(j, end=' ')
+        print('')
+        for k in self.list3:
+            print(k, end=' ')
+        print('')
+
+
+    def __add__(self, second_matrix ):
+        [second_matrix1, second_matrix2, second_matrix3] = second_matrix
+
+        res1=[x+y for x, y in zip(self.list1, second_matrix1)]
+        res2=[x+y for x, y in zip(self.list2, second_matrix2)]
+        res3=[x+y for x, y in zip(self.list3, second_matrix3)]
+        for i in res1:
+            print(i, end=' ')
+        print('')
+        for j in res2:
+            print(j, end=' ')
+        print('')
+        for k in res2:
+            print(k, end=' ')
+        print('')
+
+a=Matrix([[1,2,3],[4,5,6],[7,8,9]])
+a.__str__()
+a.__add__([[11,21,31],[4,5,6],[7,8,9]])
+
+**************************************************************************************
+
+№2
+
+class Cloth(): #не знаю, какие параметры от одежды должны наследовать остальные классы
+    def __init__(self):
+        pass
+
+class Coat(Cloth):
+
+    def __init__(self, v):
+        self.v = v
+
+    #@property
+    def cl_expense(self):
+        return int(self.v)*6.5 + 0.5
+
+    #@cl_expense.setter #не придумала, что тут можно проверить с сеттером и куда property вставить
+    #def cl_expense(self, cl_expense):
+    #    self.cl_expense
+
+
+class Costume(Cloth):
+
+    def __init__(self, h):
+        self.h = h
+
+    #@property
+    def cl_expense(self):
+        return self.h * 2 + 0.3
+
+class Expense_c(Costume, Coat):
+    def __init__(self, h, v):
+        Coat.__init__(self, v)
+        Costume.__init__(self, h)
+
+    #@property
+    def expense_calc(self):
+
+        return Coat.cl_expense(self) + Costume.cl_expense(self)
+
+a=Coat(3)
+print(a.cl_expense())
+b=Costume(4)
+print(b.cl_expense())
+c=Expense_c(1,2)
+print(c.expense_calc())
+
+
+**************************************************************************************
+
+№3
+
+class Cell():
+    def __init__(self, cell_q):
+        self.cell_q=cell_q
+
+    def __add__(self, other_q):
+        return self.cell_q+other_q.cell_q
+
+    def __sub__(self, other_q):
+        if self.cell_q>other_q.cell_q:
+            return self.cell_q-other_q.cell_q
+        else:
+            return 'Impossible to substract'
+
+    def __mul__(self, other_q):
+        return self.cell_q * other_q.cell_q
+
+    def __truediv__(self, other_q):
+        return self.cell_q//other_q.cell_q
+
+    def make_order(self, cell_q, row_q):
+        start_no=-1
+        result_c=''
+        for i in range(cell_q):
+            start_no=start_no+1
+
+            if start_no<row_q:
+                result_c=result_c+'*'
+
+            elif start_no>=row_q:
+                 result_c=result_c + r"\n"+ '*'
+                 start_no = 0
+        return result_c
+
+a=Cell(6)
+b=Cell(4)
+print(a/b)
+print(a+b)
+print(a-b)
+print(a*b)
+print(a.make_order(20, 3))
