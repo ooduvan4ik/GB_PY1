@@ -1,0 +1,147 @@
+#1
+
+class Date():
+    #def __init__(self, in_dt='01-02-1990'):
+    #    self.in_dt=in_dt
+
+    @classmethod
+    def dt_reader(cls, in_dt):
+        dt_list=in_dt.split('-')
+        dt_dt=int(dt_list[0])
+        dt_m=int(dt_list[1])
+        dt_y=int(dt_list[2])
+        return dt_dt, dt_m, dt_y
+
+    @staticmethod
+    def dt_checker(in_dt):
+        dt_dt, dt_m, dt_y = Date.dt_reader(in_dt)
+        if dt_dt<1 or dt_dt>31:
+            print('Число не является датой')
+        if dt_m<1 or dt_dt>12:
+            print('Число не является месяцем')
+        if dt_y<2000 or dt_dt>2021:
+            print('год не верен')
+
+a=Date()
+print(a.dt_reader('01-02-1990'))
+print(Date.dt_reader('01-02-1990'))
+Date.dt_checker('40-02-1990')
+
+*******************************************************************************
+
+#2
+
+class Except_0():
+    def __init__(self, in_param, in_param_2):
+        try:
+            in_param/in_param_2
+        except ZeroDivisionError:
+            print('нельзя делить на 0')
+        else:
+            print(in_param/in_param_2)
+
+a=Except_0(2, 1)
+b=Except_0(2, 0)
+
+*******************************************************************************
+
+#3
+
+class Except_1():
+    def __init__(self):
+        pass
+    my_list = []
+
+    i = input('Введите любое число: ')
+    while i != 'stop':
+        try:
+            i = int(i)
+        except ValueError:
+            print("Вы ввели не число")
+            i = input('Введите любое число: ')
+        else:
+            my_list.append(i)
+            i = input('Введите любое число: ')
+        if i=='stop':
+            break
+
+a=Except_1()
+print(a.my_list)
+
+*******************************************************************************
+
+#4, 5, 6
+
+class Org_wh():
+    def __init__(self):
+        pass
+
+class Orgtech(Org_wh):
+    def __init__(self,  price,  receive_dt, responsible_dept, qu_dict_in, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.price=price
+        self.receive_dt=receive_dt
+        self.responsible_dept=responsible_dept
+        self.p_q = int(qu_dict_in['p'])
+        self.s_q = int(qu_dict_in['s'])
+        self.x_q = int(qu_dict_in['x'])
+
+    #def incoming(self, p_q, s_q, x_q):
+
+class Printer(Orgtech):
+    def __init__(self, p_new, new_dept,  *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.p_new=p_new
+        self.new_dept=new_dept
+
+    def in_p(self):
+        self.p_q=self.p_q+self.p_new
+        self.responsible_dept=self.new_dept
+        return self.p_q, self.responsible_dept
+
+class Scaner(Orgtech):
+    def __init__(self, p_new, new_dept,  *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.p_new=p_new
+        self.new_dept=new_dept
+
+    def in_p(self):
+        self.p_q=self.p_q+self.p_new
+        self.responsible_dept=self.new_dept
+        return self.p_q, self.responsible_dept
+
+class Xerox(Orgtech):
+    def __init__(self, p_new, new_dept,  *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.p_new=p_new
+        self.new_dept=new_dept
+
+    def in_p(self):
+        self.p_q=self.p_q+self.p_new
+        self.responsible_dept=self.new_dept
+        return self.p_q, self.responsible_dept
+
+a=Printer(4, 'FIN', 40, '01.01.2021', 'ACC', {'p':1, 's':2, 'x':3})
+#print(a.p_q)
+print(a.in_p())
+
+b= Xerox(5, 'IT', 33, '02.01.2021', 'ACC', {'p':4, 's':5, 'x':6})
+print(b.in_p())
+
+*******************************************************************************
+
+#7
+
+class Complex_n():
+    def __init__(self, x, y ):
+        self.x = x
+        self.y = y
+
+    def __add__(self, otherx, othery ):
+        new_x=otherx+self.x
+        new_y=othery+self.y
+        return str(new_x)+"+"+str(new_y)+"i"
+
+a=Complex_n(2,3)
+print(a.__add__(4, 5))
+
